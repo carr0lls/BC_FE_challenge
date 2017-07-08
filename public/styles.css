@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	font-family: sans-serif;
 	font-weight: 100;
+	color: #193A54;	
 }
 
 html,
@@ -22,19 +23,19 @@ header {
 header #search {
 	flex-basis: 100%;
 	padding: .6rem .5rem;
-	font-size: 1.2rem;
+	font-size: 1.6rem;
 	outline: none;
 	border: none;
 }
 
 header #search::placeholder {
 	font-style: italic;
-	opacity: .5;	
+	opacity: .5;
 }
 
 .content {
 	display: flex;
-	min-height: 80%;
+	min-height: 75%;
 	border-bottom: 1px solid #193A54;
 }
 
@@ -56,6 +57,10 @@ header #search::placeholder {
 	border-bottom: 1px solid #193A54;
 }
 
+.content aside #company-list li:last-child {
+	border-bottom: none;
+}
+
 .content aside #company-list li:hover {
 	cursor: pointer;
 	background: #193A54;
@@ -74,9 +79,34 @@ header #search::placeholder {
 .content #company-info .avatar img {
 	margin: 0 0 .3rem 0;
 	max-width: 100%;
+	max-height: 20rem;
 }
 
-footer {
+footer.pagination {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 10%;
+}
+
+footer.pagination button {
+    border: none;
+    background: #fff;
+    font-size: 1.5rem;
+    outline: none;
+    padding: .5rem .5rem;
+}
+
+footer.pagination button:hover {
+    color: #FF8F12;
+    cursor: pointer;
+}
+
+footer.pagination span {
+    font-size: 1.5rem;
+    padding: .5rem .5rem;
+}
+
+.hidden {
+	visibility: hidden;
 }

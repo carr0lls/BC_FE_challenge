@@ -13,18 +13,21 @@
 				<ul id="company-list"></ul>
 			</aside>
 			<section id="company-info">
-				<h2 class="name"></h2>
-				<div class="phone"></div>
-				<div class="website">
-					<a href=""></a>
-				</div>
+				<a class="website" href="" target="_blank">
+					<h2 class="name"></h2>
+				</a>
 				<div class="avatar">
 					<img src="" />
 				</div>
+				<div class="phone"></div>
 				<div class="labor-type"></div>
 			</section>
 		</div>
-		<footer></footer>
+		<footer class="pagination">
+			<button id="previous-page" class="hidden"><<</button>
+			<span id="current-page"></span>
+			<button id="next-page" class="hidden">>></button>
+		</footer>
 		<script src="script.js"></script>
 	</body>
 </html>
