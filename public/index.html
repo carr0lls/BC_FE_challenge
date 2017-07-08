@@ -8,6 +8,15 @@
 		<header>
 			<input type="text" id="search" name="search" placeholder="Search company" />
 		</header>
+		<div class="filters">
+			Filters: 
+			<input type="checkbox" id="union-filter" class="filter" name="union-filter" value="Union" />
+			<label for="union-filter">Union</label>
+			<input type="checkbox" id="non-union-filter" class="filter" name="non-union-filter" value="Non-Union" />
+			<label for="non-union-filter">Non-Union</label>
+			<input type="checkbox" id="prevailing-filter" class="filter" name="prevailing-filter" value="Prevailing Wages" />
+			<label for="prevailing-filter">Prevailing Wages</label>
+		</div>
 		<div class="content">
 			<aside>
 				<ul id="company-list"></ul>

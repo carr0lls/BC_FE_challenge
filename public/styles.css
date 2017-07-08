@@ -33,6 +33,12 @@ header #search::placeholder {
 	opacity: .5;
 }
 
+.filters {
+	border-bottom: 1px solid #193A54;
+	padding: .6rem .5rem;
+	height: 5%;
+}
+
 .content {
 	display: flex;
 	min-height: 75%;
