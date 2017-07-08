@@ -2,10 +2,29 @@
 <html>
 	<head>
 		<title>Building Connected | Company Search</title>
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<input type="text" id="search" name="search" />
-		<ul id="company-list"></ul>
+		<header>
+			<input type="text" id="search" name="search" placeholder="Search company" />
+		</header>
+		<div class="content">
+			<aside>
+				<ul id="company-list"></ul>
+			</aside>
+			<section id="company-info">
+				<h2 class="name"></h2>
+				<div class="phone"></div>
+				<div class="website">
+					<a href=""></a>
+				</div>
+				<div class="avatar">
+					<img src="" />
+				</div>
+				<div class="labor-type"></div>
+			</section>
+		</div>
+		<footer></footer>
 		<script src="script.js"></script>
 	</body>
 </html>
