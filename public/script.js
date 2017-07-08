@@ -2,6 +2,7 @@
 	
 	const API_BASE_URL = `http://localhost:3000`;
 	const SEARCH_TIMEOUT_DELAY = 1000;
+	const SEARCH_LIMIT = 10;
 	// Search elements
 	const search = document.getElementById("search");
 	// List view elements
@@ -39,14 +40,14 @@
 		companyList.innerHTML = companies;
 
 		previousPage.className = (startingEntry <= 0) ? 'hidden' : '';
-		currentPage.innerText = (startingEntry + 10 >= totalEntries) 
+		currentPage.innerText = (startingEntry + SEARCH_LIMIT >= totalEntries) 
 								? `(${startingEntry} - ${totalEntries}) of ${totalEntries}` 
-								: `(${startingEntry} - ${startingEntry + 10}) of ${totalEntries}`;
-		nextPage.className = (startingEntry + 10 >= totalEntries) ? 'hidden' : '';
+								: `(${startingEntry} - ${startingEntry + SEARCH_LIMIT}) of ${totalEntries}`;
+		nextPage.className = (startingEntry + SEARCH_LIMIT >= totalEntries) ? 'hidden' : '';
 	}
 
-	function searchCompanies(name='', entry=0, filter='') {
-		fetch(`${API_BASE_URL}/api/companies?q=${name}&start=${entry}&laborTypes=${filter}`)
+	function searchCompanies(name='', entry=0, filter='', searchLimit=SEARCH_LIMIT) {
+		fetch(`${API_BASE_URL}/api/companies?q=${name}&start=${entry}&laborTypes=${filter}&limit=${searchLimit}`)
 			.then((result) => result.json())
 			.then(renderCompanyInfoList)
 			.catch((err) => console.log(err));
@@ -95,14 +96,14 @@
 		});
 		// Pagination event listeners
 		previousPage.addEventListener("click", function(e) {
-			if (startingEntry - 10 >= 0) {
-				startingEntry -= 10;
+			if (startingEntry - SEARCH_LIMIT >= 0) {
+				startingEntry -= SEARCH_LIMIT;
 				searchCompanies(search.value, startingEntry, filterString);
 			}
 		});
 		nextPage.addEventListener("click", function(e) {
-			if (startingEntry < totalEntries - 10) {
-				startingEntry += 10;
+			if (startingEntry < totalEntries - SEARCH_LIMIT) {
+				startingEntry += SEARCH_LIMIT;
 				searchCompanies(search.value, startingEntry, filterString);
 			}
 		});
