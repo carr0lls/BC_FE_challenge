@@ -1,5 +1,6 @@
 (function() {
 	const API_BASE_URL = `http://localhost:3000`;
+	const SEARCH_TIMEOUT_DELAY = 1000;
 	const search = document.getElementById("search");
 	const companyList = document.getElementById("company-list");
 
@@ -20,8 +21,13 @@
 	}
 
 	function bindEventListeners() {
+		let searchTimestamp;
+
 		search.addEventListener("keyup", function(e) {
-			searchCompanies(e.target.value);
+			if (searchTimestamp)
+				clearTimeout(searchTimestamp);
+
+			searchTimestamp = setTimeout(searchCompanies.bind(null, e.target.value), SEARCH_TIMEOUT_DELAY);
 		});
 	}
 	
