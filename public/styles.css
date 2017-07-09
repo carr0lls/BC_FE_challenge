@@ -14,10 +14,16 @@ body {
 	height: 100%;
 }
 
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
 header {
 	display: flex;
 	border-bottom: 1px solid #193A54;
-	height: 10%;
+	flex-basis: 10%;
 }
 
 header #search {
@@ -36,12 +42,12 @@ header #search::placeholder {
 .filters {
 	border-bottom: 1px solid #193A54;
 	padding: .6rem .5rem;
-	height: 5%;
+	flex-basis: 5%;
 }
 
 .content {
 	display: flex;
-	min-height: 75%;
+	flex-basis: 75%;
 	border-bottom: 1px solid #193A54;
 }
 
@@ -55,6 +61,7 @@ header #search::placeholder {
 	padding: 0;
 	margin: 0;
 	width: 100%;
+	overflow: auto;
 }
 
 .content aside #company-list li {
@@ -76,6 +83,7 @@ header #search::placeholder {
 .content #company-info {
 	flex-basis: 70%;
 	padding: .6rem .5rem;
+	overflow: auto;
 }
 
 .content #company-info h2 {
@@ -92,7 +100,7 @@ footer.pagination {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 10%;
+	flex-basis: 10%;
 }
 
 footer.pagination button {
