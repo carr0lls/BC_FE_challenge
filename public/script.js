@@ -5,6 +5,7 @@
 	const SEARCH_LIMIT = 10;
 	// Search elements
 	const search = document.getElementById("search");
+	let lastSearchId = 0;	
 	// List view elements
 	const companyList = document.getElementById("company-list");
 	// Detailed view elements
@@ -23,11 +24,15 @@
 	const currentPage = document.getElementById("current-page");
 	let startingEntry = 0, totalEntries;
 
-	function renderCompanyInfoList({results, total}) {
-		totalEntries = total;
+	function renderCompanyInfoList({searchId, data}) {
+		console.log(searchId, lastSearchId);
+		if (searchId !== lastSearchId)
+			return;
+
+		totalEntries = data.total;
 		let companies = ``;
 
-		results.map((company) => {
+		data.results.map((company) => {
 			companies += `
 				<li data-name="${company.name}"
 					data-phone="${company.phone}"
@@ -47,18 +52,20 @@
 	}
 
 	function searchCompanies(name='', entry=0, filter='', searchLimit=SEARCH_LIMIT) {
+		let searchId = ++lastSearchId;
 		fetch(`${API_BASE_URL}/api/companies?q=${name}&start=${entry}&laborTypes=${filter}&limit=${searchLimit}`)
 			.then((result) => result.json())
+			.then((data) => { return { searchId, data} })
 			.then(renderCompanyInfoList)
 			.catch((err) => console.log(err));
 	}
 
 	function renderDetailedCompanyView(companyInfo) {
-		detailedCompany['name'].innerHTML = companyInfo.name;
-		detailedCompany['phone'].innerHTML = 'Phone: ' + companyInfo.phone;
+		detailedCompany['name'].innerText = companyInfo.name;
+		detailedCompany['phone'].innerText = 'Phone: ' + companyInfo.phone;
 		detailedCompany['website'].href = companyInfo.website;
 		detailedCompany['avatar'].src = companyInfo.avatarUrl;
-		detailedCompany['laborType'].innerHTML = 'Labor Type: ' + companyInfo.laborType;
+		detailedCompany['laborType'].innerText = 'Labor Type: ' + companyInfo.laborType;
 	}
 
 	function bindEventListeners() {
