@@ -25,7 +25,6 @@
 	let startingEntry = 0, totalEntries;
 
 	function renderCompanyInfoList({searchId, data}) {
-		console.log(searchId, lastSearchId);
 		if (searchId !== lastSearchId)
 			return;
 
